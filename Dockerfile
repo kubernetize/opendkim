@@ -20,7 +20,7 @@ RUN ./configure \
 
 RUN make
 
-RUN make install
+RUN make install-strip
 
 FROM alpine:3.16
 
