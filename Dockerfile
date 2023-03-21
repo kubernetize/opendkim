@@ -1,12 +1,11 @@
 FROM alpine:3.16 AS build
 
-ARG pkgver=2.11.0
-ARG subrel="Beta2"
+ARG commit=551ab3820476
 
 RUN \
     apk --no-cache add curl tar gcc libc-dev autoconf automake libtool make openssl-dev libmilter-dev unbound-dev && \
     mkdir /opendkim && \
-    curl -sL https://github.com/trusteddomainproject/OpenDKIM/archive/refs/tags/$pkgver-$subrel.tar.gz | \
+    curl -sL https://github.com/trusteddomainproject/OpenDKIM/archive/$commit.tar.gz | \
     tar xzf - -C /opendkim --strip-components=1
 
 WORKDIR /opendkim
