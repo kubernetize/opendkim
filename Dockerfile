@@ -28,7 +28,7 @@ LABEL maintainer="Richard Kojedzinszky <richard@kojedz.in>"
 RUN \
     addgroup -g 10024 opendkim && \
     adduser -h /run/opendkim -S -D -H -G opendkim -u 10024 opendkim && \
-    apk --no-cache add libssl3 libmilter unbound-libs && \
+    apk --no-cache add libssl3 libmilter unbound-libs dnssec-root && \
     mkdir /etc/opendkim-private && \
     chown opendkim /etc/opendkim-private && \
     chmod 750 /etc/opendkim-private
