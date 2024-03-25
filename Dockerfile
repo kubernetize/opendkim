@@ -1,4 +1,4 @@
-FROM alpine:3.18 AS build
+FROM alpine:3.19 AS build
 
 ARG commit=12ef94af66c2437f2d317
 
