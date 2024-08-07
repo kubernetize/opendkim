@@ -1,4 +1,4 @@
-FROM alpine:3.19 AS build
+FROM alpine:3.20 AS build
 
 ARG commit=12ef94af66c2437f2d317
 
@@ -21,7 +21,7 @@ RUN make
 
 RUN make install-strip
 
-FROM alpine:3.18
+FROM alpine:3.20
 
 LABEL maintainer="Richard Kojedzinszky <richard@kojedz.in>"
 
