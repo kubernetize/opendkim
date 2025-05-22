@@ -1,11 +1,11 @@
-FROM alpine:3.20 AS build
+FROM ghcr.io/kubernetize/alpine-service-base AS build
 
-ARG commit=12ef94af66c2437f2d317
+ARG commit=19c21d533231c5d6a8d47335bbe98ed3c9bdf177
 
 RUN \
     apk --no-cache add curl tar gcc libc-dev autoconf automake libtool make openssl-dev libmilter-dev unbound-dev && \
     mkdir /opendkim && \
-    curl -sL https://github.com/andreasschulze/OpenDKIM/archive/$commit.tar.gz | \
+    curl -sL https://github.com/rkojedzinszky/OpenDKIM/archive/$commit.tar.gz | \
     tar xzf - -C /opendkim --strip-components=1
 
 WORKDIR /opendkim
@@ -21,7 +21,7 @@ RUN make
 
 RUN make install-strip
 
-FROM alpine:3.20
+FROM ghcr.io/kubernetize/alpine-service-base
 
 LABEL maintainer="Richard Kojedzinszky <richard@kojedz.in>"
 
